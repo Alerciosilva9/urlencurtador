@@ -8,12 +8,10 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
-	
-	<form action="#" th:action="@{/encurtar}" method="post" th:object="${url}">
-		<label>Informe a Url</label>
-        <input type="text" th:field="*{link}" /><br/>
-		<button type="submit">Encurtar</button>    
-	</form>
+	<div class="container">
+		<h1>Sua Url Encurtada/h1>
+		<p>${urlencurtada}</p>
+		 <div th:utext="${urlencurtada}" id="scheduler"></div>
 		
 </body>
 </html>

@@ -17,12 +17,10 @@ public class UrlService {
 	
 	
 	public Url SaveUrl(Url url) {
-		Url urltosave = new Url();
-		urltosave = repo.findByLink(url.getLink()).orElse(null);
-		if(urltosave!=null) {
-			return urltosave;
+		if((repo.findByLink(url.getLink()).orElse(null)) != null) {
+			return repo.findByLink(url.getLink()).orElse(null);
 		}
-		urltosave = new Url();
+		Url urltosave = new Url();	
 		urltosave.setLink(url.getLink());
 		String encurtada = getRandom(5);
 		while(verificarurl(encurtada)) {
@@ -32,10 +30,17 @@ public class UrlService {
 		repo.save(urltosave);
 		return urltosave;
 	}
+	
+	public String Redirecionar(String shortUrl) {
+		Url urlRedirect = repo.findByUrlencurtada(shortUrl).orElse(null);
+		if(urlRedirect==null) {
+			return null;
+		}else {
+			return urlRedirect.getLink();
+		}
+	}
 	//FUNÇÃO QUE VERIFICA SE URL GERADA JÁ EXISTE NO BANCO
 	public Boolean verificarurl(String urlencurtada) {
-		System.out.println("Verificando..."+urlencurtada);
-		System.out.println(repo.VerificarUrl(urlencurtada));
 		if(repo.VerificarUrl(urlencurtada)>0){
 			return true;
 		}

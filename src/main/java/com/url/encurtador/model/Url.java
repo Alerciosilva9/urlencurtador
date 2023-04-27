@@ -1,9 +1,11 @@
 package com.url.encurtador.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Url {
@@ -11,6 +13,8 @@ public class Url {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 
+	 
+	@NotNull(message = "Informe um Link Valido")
 	private String link;
 	
 	private String urlencurtada;
@@ -22,6 +26,10 @@ public class Url {
 	}
 	public void setLink(String link) {
 		this.link = link;
+	}
+	@Override
+	public String toString() {
+		return "Url [id=" + id + ", link=" + link + ", urlencurtada=" + urlencurtada + "]";
 	}
 	public String getUrlencurtada() {
 		return urlencurtada;
