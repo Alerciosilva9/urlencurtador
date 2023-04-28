@@ -11,11 +11,11 @@ import com.url.encurtador.model.Url;
 @Repository
 public interface UrlRepository extends JpaRepository<Url, Long> {
 	
-	Optional<Url> findByLink(String Link);
-	Optional<Url> findByUrlencurtada(String Urlencurtada);
+	//Optional<Url> findByFullUrl(String FullUrl);
+	Optional<Url> findByShortUrl(String ShortUrl);
 	
 	
-	@Query("SELECT COUNT(u) FROM Url u WHERE u.urlencurtada=?1")
+	@Query("SELECT COUNT(u) FROM Url u WHERE u.shortUrl=?1")
 	long VerificarUrl(String UrlEncurtada);
 	
 	

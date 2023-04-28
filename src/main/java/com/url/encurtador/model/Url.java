@@ -13,29 +13,29 @@ public class Url {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 
-	 
 	@NotNull(message = "Informe um Link Valido")
-	private String link;
+	@Column(name = "full_url")
+	private String fullUrl;
 	
-	private String urlencurtada;
+	@Column(name = "short_url")
+	private String shortUrl;
+
+	public String getFullurl() {
+		return fullUrl;
+	}
+
+	public void setFullurl(String fullurl) {
+		this.fullUrl = fullurl;
+	}
+
+	public String getShortUrl() {
+		return shortUrl;
+	}
+
+	public void setShortUrl(String shortUrl) {
+		this.shortUrl = shortUrl;
+	}
 	
 	
-	
-	public String getLink() {
-		return link;
-	}
-	public void setLink(String link) {
-		this.link = link;
-	}
-	@Override
-	public String toString() {
-		return "Url [id=" + id + ", link=" + link + ", urlencurtada=" + urlencurtada + "]";
-	}
-	public String getUrlencurtada() {
-		return urlencurtada;
-	}
-	public void setUrlencurtada(String urlencurtada) {
-		this.urlencurtada = urlencurtada;
-	}
 	
 }
