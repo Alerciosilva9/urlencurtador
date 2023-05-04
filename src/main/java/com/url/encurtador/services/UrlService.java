@@ -1,8 +1,15 @@
 package com.url.encurtador.services;
 
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +19,17 @@ import com.url.encurtador.repositories.UrlRepository;
 
 @Service
 public class UrlService {
+	
 	@Autowired
 	UrlRepository repo;
 	
 	
 	public Url SaveUrl(Url url) {
+		String fullurl = formatUrl(url.getFullurl());
+		if(!validarUrl(fullurl))return null;
+		
 		Url urltosave = new Url();	
-		urltosave.setFullurl(url.getFullurl());
+		urltosave.setFullurl(fullurl);
 		String encurtada = getRandom(5);
 		while(repo.VerificarUrl(encurtada)>0) {
 			encurtada = getRandom(5);
@@ -28,17 +39,39 @@ public class UrlService {
 		return urltosave;
 	}
 	
+	public List<Url> findAll(){
+		return repo.findAll();
+	}
+	
 	public String Redirecionar(String shortUrl) {
 		Url urlRedirect = repo.findByShortUrl(shortUrl).orElse(null);
 		if(urlRedirect==null) {
 			return null;
-		}else {
-			return urlRedirect.getFullurl();
 		}
+		return urlRedirect.getFullurl();
 	}
 	
-	public boolean validarUrl(String url) {
-		return true;
+	public String formatUrl(String url) {
+		String[] prefixes = new String[]{"https://","https:/","http://","http:/"};
+		for(String s:prefixes) {
+			if(url.startsWith(s)) {
+				return url.substring(s.length());
+			}
+		}
+		return url;
+	}
+	
+	
+	public Boolean validarUrl(String url) {
+        String regex = "(www.)"
+              + "[a-zA-Z0-9@:%._\\+~#?&//=]"
+              + "{2,256}\\.[a-z]"
+              + "{2,6}\\b([-a-zA-Z0-9@:%"
+              + "._\\+~#?&//=]*)";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(url);
+        return m.matches();
+		
 	}
 	
 	
