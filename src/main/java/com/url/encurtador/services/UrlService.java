@@ -2,18 +2,11 @@ package com.url.encurtador.services;
 
 import java.nio.charset.Charset;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.url.encurtador.model.Url;
 import com.url.encurtador.repositories.UrlRepository;
 
@@ -99,8 +92,6 @@ public class UrlService {
 				n--;
 			}
 		}
-		
-		// return the resultant string
 		return r.toString();
 	}
 	

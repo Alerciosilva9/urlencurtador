@@ -1,5 +1,7 @@
 package com.url.encurtador.model;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,23 @@ public class Url {
 	@Column(name = "full_url")
 	private String fullUrl;
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Url other = (Url) obj;
+		return Objects.equals(id, other.id);
+	}
+
 	@Column(name = "short_url")
 	private String shortUrl;
 
