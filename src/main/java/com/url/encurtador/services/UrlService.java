@@ -24,7 +24,7 @@ public class UrlService {
 		Url urltosave = new Url();	
 		urltosave.setFullurl(fullurl);
 		String encurtada = getRandom(5);
-		while(repo.VerificarUrl(encurtada)>0) {
+		while(repo.findByShortUrl(encurtada).orElse(null)!=null) {
 			encurtada = getRandom(5);
 		}
 		urltosave.setShortUrl(encurtada);
@@ -41,6 +41,8 @@ public class UrlService {
 		if(urlRedirect==null) {
 			return null;
 		}
+		urlRedirect.setCount(urlRedirect.getCount()+1);
+		repo.save(urlRedirect);
 		return urlRedirect.getFullurl();
 	}
 	

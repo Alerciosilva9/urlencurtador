@@ -4,7 +4,7 @@
 <p align="center">
   <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#arrow_forward: Como Usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#arrow_forward-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
 <br>
@@ -26,21 +26,22 @@ Esse projeto é uma API REST desenvolvida, utilizando [Spring Framework](https:/
 ## :arrow_forward: Como Usar
 
 - Para efeito de testes o projeto foi implantado na nuvem utilizando a plataforma Railway.
-e pode ser acessado por meio do link (urlencurtador-production.up.railway.app)
+e pode ser acessado por meio do link [urlencurtador-production.up.railway.app](https://urlencurtador-production.up.railway.app)
 
-### Endpoints
-# :arrow_forward: Listar todas
-Por meio da URL [urlencurtador-production.up.railway.app](urlencurtador-production.up.railway.app) é possível visualizar uma lista com todas as urls encurtadas e suas respectivas chaves aleatorias geradas.
-# :arrow_forward: Encurtar url
-Por meio de uma requisição POST para a URL [urlencurtador-production.up.railway.app/encurtar](urlencurtador-production.up.railway.app/encurtar) é possível gerar uma URL encurtada.
+
+## Endpoints
+#### :arrow_forward: Listar todas
+Por meio da URL [urlencurtador-production.up.railway.app](https://urlencurtador-production.up.railway.app) é possível visualizar uma lista com todas as urls encurtadas e suas respectivas chaves aleatorias geradas.
+#### :arrow_forward: Encurtar url
+Por meio de uma requisição POST para a URL [urlencurtador-production.up.railway.app/encurtar](https://urlencurtador-production.up.railway.app/encurtar) é possível gerar uma URL encurtada.
 obs: O corpo da requisição deve estar em formato JSON, seguindo a seguinte estrutura:
-        <br>{<br>
+        <br>{<br><br>
             "fullurl":"www.google.com"<br>
         }<br>
-# :arrow_forward: Encurtar url
+####:arrow_forward: Encurtar url
 Para acessar uma URL apartir de uma Url encurtada, deve se acessar (urlencurtador-production.up.railway.app/s/"chave aleatoria") 
 
-Ex: [urlencurtador-production.up.railway.app/s/rjpKM](urlencurtador-production.up.railway.app/s/rjpKM)
+Ex: [urlencurtador-production.up.railway.app/s/rjpKM](https://urlencurtador-production.up.railway.app/s/rjpKM)
                                                                                                         
 
 

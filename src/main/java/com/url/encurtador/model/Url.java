@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Url {
@@ -16,10 +15,19 @@ public class Url {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "Informe um Link Valido")
-	@NotEmpty
+	@NotEmpty(message = "Informe uma URL Valida")
 	@Column(name = "full_url")
 	private String fullUrl;
+	
+	private Integer count;
+	
+
+	@Column(name = "short_url")
+	private String shortUrl;
+	
+	public Url() {
+		this.count = 0;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -38,9 +46,6 @@ public class Url {
 		return Objects.equals(id, other.id);
 	}
 
-	@Column(name = "short_url")
-	private String shortUrl;
-
 	public String getFullurl() {
 		return fullUrl;
 	}
@@ -55,6 +60,13 @@ public class Url {
 
 	public void setShortUrl(String shortUrl) {
 		this.shortUrl = shortUrl;
+	}
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 	
 	
