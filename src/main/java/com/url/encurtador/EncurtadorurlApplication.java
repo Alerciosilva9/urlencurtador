@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class EncurtadorurlApplication {
 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EncurtadorurlApplication.class, args);
 	}
